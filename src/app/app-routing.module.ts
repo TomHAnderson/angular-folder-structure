@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: '',
     component: ContentLayoutComponent,
-    canActivate: [NoAuthGuard], // Should be replaced with actual auth guard
+    canActivate: [NoAuthGuard],
     children: CONTENT_ROUTES
   },
   {
@@ -25,13 +25,12 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     loadChildren: './modules/auth/auth.module#AuthModule'
   },
-  // Fallback when no prior routes is matched
   { path: '**', redirectTo: '/auth/login', pathMatch: 'full' }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true})],
-    exports: [RouterModule],
-    providers: []
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule],
+  providers: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
